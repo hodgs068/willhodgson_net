@@ -1,0 +1,1077 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>pixi.js example 1</title>
+	
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			background-color: #000000;
+		}
+	</style>
+	<div>
+	<script src="pixi.js"></script>
+	</div>
+	<div><font color = white> Use left and right arrows to turn planet (reload page once world texture loads if ball gets stuck!) </header><div>
+
+</head>
+<body>
+  <audio id="bed" loop>
+       <source src="battlerock.mp3">
+  </audio>
+
+	<script>
+	
+	
+	
+	
+
+	
+	
+	
+	// create an array of items you wish to load..
+var assetsToLoader = [ "world.png", "ball.png", "redbrick.png", "greenbrick.png", "bluebrick.png"];
+	
+// create a new loader
+loader = new PIXI.AssetLoader(assetsToLoader);
+	
+// use a callback
+// use a callback
+loader.onComplete = onAssetsLoaded
+	
+//begin load
+loader.load();
+
+
+
+
+function onAssetsLoaded()
+{
+    // start your game :D
+    //var coolCrab = Sprite.fromImage("myImage.png");
+
+
+	
+	
+function changeBed(soundfile){
+	//if (new Audio().canPlayType("audio/ogg; codecs=vorbis"))
+	//	  {
+	//		ffbed = document.getElementById('bed');
+	//		ffbed.src= 'audio/' + soundfile + '.ogg';
+	//		ffbed.load();
+	//		ffbed.play();
+	//	  }
+	//	  else
+	//	  {
+			bed.setAttribute('src', soundfile + ".mp3");
+			bed.play();
+	//	  }
+}
+	changeBed('Battlerock');     ///////////////////////////////////////////////////////////uncomment to activate music
+	
+	//////////// use IF statement if you want to enable sound in firefox
+	//if (new Audio().canPlayType("audio/ogg; codecs=vorbis")){
+
+    //        snd = new Audio("audio/cry.ogg");
+    //        pieSound = new Audio("audio/pie.ogg");
+    //        appleSound = new Audio("audio/apple.ogg");
+
+     //     }
+     //     else{
+			var audioElementWorldHit = [];
+			for (i = 0; i < 6; i++) {
+		    audioElementWorldHit[i] = document.createElement('audio');
+		    audioElementWorldHit[i].setAttribute('src', 'worldHit.mp3');
+			}
+			worldHitSoundCount = 0;
+			function worldHitSoundCounter () {
+				worldHitSoundCount += 1;
+				if (worldHitSoundCount > 5){
+					worldHitSoundCount = 0;
+				}
+				return worldHitSoundCount;
+			}
+		//    audioElementPie = document.createElement('audio');
+		//    audioElementPie.setAttribute('src', 'audio/pie.mp3');
+
+		 //   audioElementApple = document.createElement('audio');
+		//    audioElementApple.setAttribute('src', 'audio/apple.mp3');
+
+       //   }
+
+	
+	
+	
+	
+			var audioElementBoundryHit = [];
+			for (i = 0; i < 6; i++) {
+		    audioElementBoundryHit[i] = document.createElement('audio');
+		    audioElementBoundryHit[i].setAttribute('src', 'objectBounce.wav');
+			}
+			boundryHitSoundCount = 0;
+			function boundryHitSoundCounter () {
+				boundryHitSoundCount += 1;
+				if (boundryHitSoundCount > 5){
+					boundryHitSoundCount = 0;
+				}
+				return boundryHitSoundCount;
+			}
+	
+	
+			var audioElementSideHit = [];
+			for (i = 0; i < 6; i++) {
+		    audioElementSideHit[i] = document.createElement('audio');
+		    audioElementSideHit[i].setAttribute('src', 'boundryBounce.wav');
+			}
+			sideHitSoundCount = 0;
+			function sideHitSoundCounter () {
+				sideHitSoundCount += 1;
+				if (sideHitSoundCount > 5){
+					sideHitSoundCount = 0;
+				}
+				return sideHitSoundCount;
+			}
+	
+	
+	
+	
+	
+	// create an new instance of a pixi stage
+	var stage = new PIXI.Stage(0xA9E2F3);
+	
+	// create a renderer instance
+	var renderer = PIXI.autoDetectRenderer(800, 600);
+	
+	// add the renderer view element to the DOM
+	document.body.appendChild(renderer.view);
+	
+	
+	
+	
+	requestAnimFrame( animate );
+	
+	// create a texture from an image path
+	var texture_world = PIXI.Texture.fromImage("world.png");
+	
+	var ballFrame = new PIXI.Rectangle(0, 0, 37, 37);
+	var texture_ball = PIXI.Texture.fromImage("ball.png");
+	texture_ball.setFrame(ballFrame);
+	
+	var texture_redbrick = PIXI.Texture.fromImage("redbrick.png");
+	var texture_greenbrick = PIXI.Texture.fromImage("greenbrick.png");
+	var texture_bluebrick = PIXI.Texture.fromImage("bluebrick.png");
+	
+	
+	// create a new Sprite using the texture
+	var ball = new PIXI.Sprite(texture_ball);
+	var world = new PIXI.Sprite(texture_world);
+	
+
+	
+	
+	
+	
+
+	
+		
+	function radToDeg (rad) {
+		if (rad == 0)
+			return 0;
+		return ((rad * 360) / (2 * Math.PI));
+	}
+	function degToRad (deg) {
+		if (deg == 0)
+			return 0;
+		return ((deg * 2 * Math.PI) / (360));
+	}
+	
+
+	
+	function mod360 (rad) {
+		multiple = Math.floor(rad/(2 * Math.PI));
+		result = rad - 2 * Math.PI * multiple;
+		return result
+	}
+	
+	function sectorReturn (deg) {
+		multiple = Math.floor(deg) / 5;
+		return multiple;
+	}
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	//red brick array setup
+	var redbricks = [];
+	for (var i=0; i<3; i++) {
+		redbricks[i] = new PIXI.Sprite(texture_redbrick);
+		redbricks[i].anchor.x = 0.5;
+		redbricks[i].anchor.y = 0.5;
+		
+		redbricks[i].position.x = 400 * i + 100;
+		redbricks[i].position.y = 100;
+		
+		stage.addChild(redbricks[i]);  // possibly 
+		
+	}
+	
+	
+	
+		//green brick array setup
+	var greenbricks = [];
+	for (var i=0; i<5; i++) {
+		greenbricks[i] = new PIXI.Sprite(texture_greenbrick);
+		greenbricks[i].anchor.x = 0.5;
+		greenbricks[i].anchor.y = 0.5;
+		
+		greenbricks[i].position.x = 400 * i + 200;
+		greenbricks[i].position.y = 200;
+		
+		stage.addChild(greenbricks[i]);  // possibly 
+		
+	}
+	
+	
+		//blue brick array setup
+	var bluebricks = [];
+	for (var i=0; i<5; i++) {
+		bluebricks[i] = new PIXI.Sprite(texture_bluebrick);
+		bluebricks[i].anchor.x = 0.5;
+		bluebricks[i].anchor.y = 0.5;
+		
+		bluebricks[i].position.x = 400 * i + 300;
+		bluebricks[i].position.y = 300;
+		
+		stage.addChild(bluebricks[i]);  // possibly 
+		
+	}
+	
+	
+
+	
+	
+	// center the sprites anchor point
+	ball.anchor.x = 0.5;
+	ball.anchor.y = 0.5;
+	
+	// move the sprite t the center of the screen
+	ball.position.x = 500;
+	ball.position.y = 100;
+	
+	// center the sprites anchor point
+	world.anchor.x = 0.5;
+	world.anchor.y = 0.5;
+	
+	// move the sprite t the center of the screen
+	world.position.x = 400;
+	world.position.y = 1200;
+	
+	
+	ball_speed_x = 5; //multiply by time modifier here if possible
+	ball_speed_y = 5; //multiply by time modifier here if possible
+	
+	red_brick_speed = 1;
+	blue_brick_speed = 2;
+	green_brick_speed = 1.5;
+	
+	
+	
+	
+	stage.addChild(ball);
+	stage.addChild(world);
+	
+	
+	
+	// text add
+	
+	
+	
+	
+	
+	
+	//var text_angle_count = new PIXI.Text(radToDeg(mod360(world.rotation)));
+	//text_angle_count.position.x = 20;
+	//text_angle_count.position.y = 20;
+	//stage.addChild(text_angle_count);
+
+	
+	//var ballAngleVar = new PIXI.Text(radToDeg(mod360(ballAngle())));
+	//ballAngleVar.position.x = 20;
+	//ballAngleVar.position.y = 50;
+	//stage.addChild(ballAngleVar);
+	
+	
+	//var ballAngleTheta = new PIXI.Text(radToDeg(ballAngle() - world.rotation));
+	//ballAngleTheta.position.x = 20;
+	//ballAngleTheta.position.y = 80;
+	//stage.addChild(ballAngleTheta);
+	
+	function ballAngle () {
+		dX = world.position.x - ball.position.x;
+		dY = world.position.y - ball.position.y;
+		result = -1 * Math.atan(dX/dY);
+		return result
+	}
+	//var ballAngleSector = new PIXI.Text(Math.floor(sectorReturn(radToDeg(mod360(ballAngle() - world.rotation)))));  // add sector computation logic
+	//ballAngleSector.position.x = 20;
+	//ballAngleSector.position.y = 20;
+	//stage.addChild(ballAngleSector);
+	
+	var worldHitSoundCountText = new PIXI.Text(worldHitSoundCount);  // add sector computation logic
+	worldHitSoundCountText.position.x = 20;
+	worldHitSoundCountText.position.y = 20;
+	worldHitSoundCountText.setStyle({font: "35px Desyrel", fill: "green", stroke: "black", strokeThickness: 2}); ////////////not doing anything?
+	stage.addChild(worldHitSoundCountText);
+	
+	
+	
+	
+
+	var text_counters = [];
+	for (var i=0; i < 72; i++) {
+
+		text_counters[i] = new PIXI.Text(i);
+		text_counters[i].anchor.x = 0.5;
+		text_counters[i].anchor.y = 0.5;
+		
+		//text_counters[i].pivot = world.position;
+		theta_text = ((Math.PI / 72) + ((Math.PI / 36) * i))
+		text_counters[i].rotation = theta_text;
+		
+		text_counters[i].position.y = -700 * Math.cos(theta_text);
+		text_counters[i].position.x = 700 * Math.sin(theta_text);
+		//text_counters[i].position.x = 20 + i * 80;
+		//text_counters[i].position.y = -700;
+		
+		world.addChild(text_counters[i]);  // possibly
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	var hit_counters = [];
+	for (var i=0; i < 72; i++) {
+
+		hit_counters[i] = new PIXI.Text(0);
+		hit_counters[i].setStyle({fill: "grey", stroke: "black", strokeThickness: 2});
+		hit_counters[i].anchor.x = 0.5;
+		hit_counters[i].anchor.y = 0.5;
+		
+		//hit_counters[i].pivot = world.position;
+		theta_text = ((Math.PI / 72) + ((Math.PI / 36) * i))
+		hit_counters[i].rotation = theta_text;
+		
+		hit_counters[i].position.y = -725 * Math.cos(theta_text);
+		hit_counters[i].position.x = 725 * Math.sin(theta_text);
+		//hit_counters[i].position.x = 20 + i * 80;
+		//hit_counters[i].position.y = -700;
+		
+		world.addChild(hit_counters[i]);  // possibly
+		
+	}
+	
+	
+	
+	var hit_counter = [];
+	for (var i=0; i < 72; i++) {
+		hit_counter[i] = 0;
+	}
+	
+	var hit_counter_colors = [];
+	for (var i=0; i < 72; i++) {
+		hit_counter_colors[i] = 'g';
+	}
+	
+	
+
+	
+	
+	var keysDown = {};
+
+	addEventListener("keydown", function (e) {
+		keysDown[e.keyCode] = true;
+	}, false);
+
+	addEventListener("keyup", function (e) {
+		delete keysDown[e.keyCode];
+	}, false);
+	
+	
+
+	
+	brickBounceDown = false;
+	brickBounceUp = false;
+	brickBounceLeft = false;
+	brickBounceRight = false;
+	
+	
+	var ballColor = 'r';
+	function ballHitBrick(color) {
+		if (color == 'b'){
+			var ballFrame = new PIXI.Rectangle(74, 0, 37, 37); // set first int to 0 for red, 37 for green, 74 for blue
+			texture_ball.setFrame(ballFrame);
+			ballColor = 'b';
+		}
+		if (color == 'r'){
+			var ballFrame = new PIXI.Rectangle(0, 0, 37, 37); // set first int to 0 for red, 37 for green, 74 for blue
+			texture_ball.setFrame(ballFrame);
+			ballColor = 'r';
+		}
+		if (color == 'g'){
+			var ballFrame = new PIXI.Rectangle(37, 0, 37, 37); // set first int to 0 for red, 37 for green, 74 for blue
+			texture_ball.setFrame(ballFrame);
+			ballColor = 'g';
+		}
+	}
+
+	//use like so:
+	// ballHitBrick('g');
+	
+		
+	function brickBounce () { 
+		// red brick bounce down
+		rad_offset = 0;
+		
+		for (var i=0; i < redbricks.length; i++) {
+			if (ball.position.y - ball_half_height <= (redbricks[i].position.y + brick_half_height)
+			&& ball.position.y >= redbricks[i].position.y// + brick_half_height
+			&& ball.position.x >= redbricks[i].position.x - brick_half_width
+			&& ball.position.x <= redbricks[i].position.x + brick_half_width)
+			//)
+			{
+				brickBounceDown = true;
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			// red brick bounce up
+			if (ball.position.y + ball_half_height >= (redbricks[i].position.y - brick_half_height)
+			&& ball.position.y <= redbricks[i].position.y// - brick_half_height
+			&& ball.position.x >= redbricks[i].position.x - brick_half_width
+			&& ball.position.x <= redbricks[i].position.x + brick_half_width)
+			//)
+			{
+				brickBounceUp = true;
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			
+			// red brick bounce left
+			if (ball.position.x + ball_half_width >= (redbricks[i].position.x - brick_half_width)
+			&& ball.position.x <= redbricks[i].position.x// - brick_half_width
+			&& ball.position.y >= redbricks[i].position.y - brick_half_height
+			&& ball.position.y <= redbricks[i].position.y + brick_half_height)
+			//)
+			{
+				brickBounceLeft = true;
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			
+			// red brick bounce right
+			if (ball.position.x - ball_half_width <= (redbricks[i].position.x + brick_half_width)
+			&& ball.position.x >= redbricks[i].position.x// - brick_half_width // edit this!
+			&& ball.position.y >= redbricks[i].position.y - brick_half_height
+			&& ball.position.y <= redbricks[i].position.y + brick_half_height)
+			//)
+			{
+				brickBounceRight = true;
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+		
+			
+			//red brick top left corner
+			
+			delta_x = ball.position.x - (redbricks[i].position.x - brick_half_width);
+			delta_y = ball.position.y - (redbricks[i].position.y - brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx) * (-1);
+				ball_speed_y = Math.abs(vy) * (-1);
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			
+			
+			//red brick top right corner
+			
+			delta_x = ball.position.x - (redbricks[i].position.x + brick_half_width);
+			delta_y = ball.position.y - (redbricks[i].position.y - brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx);
+				ball_speed_y = Math.abs(vy) * (-1);
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			
+			// red brick bottom left corner
+			
+			
+			delta_x = ball.position.x - (redbricks[i].position.x - brick_half_width);
+			delta_y = ball.position.y - (redbricks[i].position.y + brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx) * (-1);
+				ball_speed_y = Math.abs(vy);
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			// red brick bottom right corner
+			
+			
+			delta_x = ball.position.x - (redbricks[i].position.x + brick_half_width);
+			delta_y = ball.position.y - (redbricks[i].position.y + brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx);
+				ball_speed_y = Math.abs(vy);
+				ballHitBrick('r');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+		
+		
+		}
+		
+		
+		
+		
+		// blue brick bounce down
+		for (var i=0; i < bluebricks.length; i++) {
+			if (ball.position.y - ball_half_height <= (bluebricks[i].position.y + brick_half_height)
+			&& ball.position.y >= bluebricks[i].position.y// + brick_half_height
+			&& ball.position.x >= bluebricks[i].position.x - brick_half_width
+			&& ball.position.x <= bluebricks[i].position.x + brick_half_width)
+			//)
+			{
+				brickBounceDown = true;
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			// blue brick bounce up
+			if (ball.position.y + ball_half_height >= (bluebricks[i].position.y - brick_half_height)
+			&& ball.position.y <= bluebricks[i].position.y// - brick_half_height
+			&& ball.position.x >= bluebricks[i].position.x - brick_half_width
+			&& ball.position.x <= bluebricks[i].position.x + brick_half_width)
+			//)
+			{
+				brickBounceUp = true;
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			
+			// blue brick bounce left
+			if (ball.position.x + ball_half_width >= (bluebricks[i].position.x - brick_half_width)
+			&& ball.position.x <= bluebricks[i].position.x// - brick_half_width
+			&& ball.position.y >= bluebricks[i].position.y - brick_half_height
+			&& ball.position.y <= bluebricks[i].position.y + brick_half_height)
+			//)
+			{
+				brickBounceLeft = true;
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			
+			// blue brick bounce right
+			if (ball.position.x - ball_half_width <= (bluebricks[i].position.x + brick_half_width)
+			&& ball.position.x >= bluebricks[i].position.x// - brick_half_width // edit this!
+			&& ball.position.y >= bluebricks[i].position.y - brick_half_height
+			&& ball.position.y <= bluebricks[i].position.y + brick_half_height)
+			//)
+			{
+				brickBounceRight = true;
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+		
+			
+			//blue brick top left corner
+			
+			delta_x = ball.position.x - (bluebricks[i].position.x - brick_half_width);
+			delta_y = ball.position.y - (bluebricks[i].position.y - brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx) * (-1);
+				ball_speed_y = Math.abs(vy) * (-1);
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			
+			//blue brick top right corner
+			
+			delta_x = ball.position.x - (bluebricks[i].position.x + brick_half_width);
+			delta_y = ball.position.y - (bluebricks[i].position.y - brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx);
+				ball_speed_y = Math.abs(vy) * (-1);
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			// blue brick bottom left corner
+			
+			
+			delta_x = ball.position.x - (bluebricks[i].position.x - brick_half_width);
+			delta_y = ball.position.y - (bluebricks[i].position.y + brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx) * (-1);
+				ball_speed_y = Math.abs(vy);
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			// blue brick bottom right corner
+			
+			
+			
+			delta_x = ball.position.x - (bluebricks[i].position.x + brick_half_width);
+			delta_y = ball.position.y - (bluebricks[i].position.y + brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx);
+				ball_speed_y = Math.abs(vy);
+				ballHitBrick('b');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			
+		}
+		
+		
+		// green brick bounce down
+		for (var i=0; i < greenbricks.length; i++) {
+			if (ball.position.y - ball_half_height <= (greenbricks[i].position.y + brick_half_height)
+			&& ball.position.y >= greenbricks[i].position.y// + brick_half_height
+			&& ball.position.x >= greenbricks[i].position.x - brick_half_width
+			&& ball.position.x <= greenbricks[i].position.x + brick_half_width)
+			//)
+			{
+				brickBounceDown = true;
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			// green brick bounce up
+			if (ball.position.y + ball_half_height >= (greenbricks[i].position.y - brick_half_height)
+			&& ball.position.y <= greenbricks[i].position.y// - brick_half_height
+			&& ball.position.x >= greenbricks[i].position.x - brick_half_width
+			&& ball.position.x <= greenbricks[i].position.x + brick_half_width)
+			//)
+			{
+				brickBounceUp = true;
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			
+			// green brick bounce left
+			if (ball.position.x + ball_half_width >= (greenbricks[i].position.x - brick_half_width)
+			&& ball.position.x <= greenbricks[i].position.x// - brick_half_width
+			&& ball.position.y >= greenbricks[i].position.y - brick_half_height
+			&& ball.position.y <= greenbricks[i].position.y + brick_half_height)
+			//)
+			{
+				brickBounceLeft = true;
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+			
+			// green brick bounce right
+			if (ball.position.x - ball_half_width <= (greenbricks[i].position.x + brick_half_width)
+			&& ball.position.x >= greenbricks[i].position.x// - brick_half_width // edit this!
+			&& ball.position.y >= greenbricks[i].position.y - brick_half_height
+			&& ball.position.y <= greenbricks[i].position.y + brick_half_height)
+			//)
+			{
+				brickBounceRight = true;
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+				return;
+			}
+		
+			//green brick top left corner
+			
+			
+			delta_x = ball.position.x - (greenbricks[i].position.x - brick_half_width);
+			delta_y = ball.position.y - (greenbricks[i].position.y - brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx) * (-1);
+				ball_speed_y = Math.abs(vy) * (-1);
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			//green brick top right corner
+			
+			delta_x = ball.position.x - (greenbricks[i].position.x + brick_half_width);
+			delta_y = ball.position.y - (greenbricks[i].position.y - brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx);
+				ball_speed_y = Math.abs(vy) * (-1);
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			
+			// green brick bottom left corner
+			
+			
+			
+			delta_x = ball.position.x - (greenbricks[i].position.x - brick_half_width);
+			delta_y = ball.position.y - (greenbricks[i].position.y + brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx) * (-1);
+				ball_speed_y = Math.abs(vy);
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+			
+			// green brick bottom right corner
+			
+			
+			delta_x = ball.position.x - (greenbricks[i].position.x + brick_half_width);
+			delta_y = ball.position.y - (greenbricks[i].position.y + brick_half_height);
+			radSquare= delta_x*delta_x + delta_y*delta_y;
+			total_height = ball.height/2.0
+			world_radius_squared = total_height * total_height + rad_offset; // legacy naming, left in for now
+			
+			if (radSquare < world_radius_squared) {
+				twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+				vx = ball_speed_x - twiceProjFactor*delta_x;
+				vy = ball_speed_y - twiceProjFactor*delta_y;
+				ball_speed_x = Math.abs(vx);
+				ball_speed_y = Math.abs(vy);
+				ballHitBrick('g');
+				audioElementBoundryHit[boundryHitSoundCounter()].play();
+			}
+		
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+
+	
+	
+	
+	
+	function animate() {
+	
+	    requestAnimFrame( animate );
+		
+		
+		ball_half_height = ball.height / 2.0;
+		ball_half_width = ball.width / 2.0;
+	
+		brick_half_height = redbricks[0].height / 2.0;
+		brick_half_width = redbricks[0].width / 2.0;
+	
+	
+	
+	
+	
+	
+	// world rotation input
+	
+	if (37 in keysDown) { // Player holding right ('left arrow' key)
+		world.rotation -= 0.005;
+
+	}	
+		
+	if (39 in keysDown) { // Player holding right ('right arrow' key)
+		world.rotation += 0.005;
+	}	
+	//text_counters[0] = new PIXI.Text("345"); // remove this, just for testing angles
+	//text_angle_count.setText(radToDeg(mod360(world.rotation)));
+	
+	//ballAngleVar.setText(radToDeg(mod360(ballAngle())));
+	
+	//ballAngleTheta.setText(radToDeg(ballAngle() - world.rotation));
+	
+	//ballAngleSector.setText(Math.floor(sectorReturn(radToDeg(mod360(ballAngle() - world.rotation)))));
+
+	
+	// logic for ball bouncing off sides of screen
+
+	
+	
+	brickBounce();
+	if (ball.position.y <= 0 + ball_half_height || brickBounceDown == true) {
+		ball_speed_y = Math.abs(ball_speed_y);
+	}
+
+	if (ball.position.y >= renderer.height - ball_half_height || brickBounceUp == true) {
+		ball_speed_y = Math.abs(ball_speed_y) * (-1);
+	}
+
+	if (ball.position.x <= 0 + ball_half_width || brickBounceRight == true) {
+		ball_speed_x = Math.abs(ball_speed_x);
+	}
+	
+	if (ball.position.x >= renderer.width - ball_half_width || brickBounceLeft == true) {
+		ball_speed_x = Math.abs(ball_speed_x) * (-1);
+	}
+	
+	
+	
+	
+	
+	
+	/// repeated logic to only play sound effect when ball bounces off walls
+	if (ball.position.y <= 0 + ball_half_height) {
+		audioElementBoundryHit[boundryHitSoundCounter()].play();
+	}
+
+	if (ball.position.y >= renderer.height - ball_half_height) {
+		audioElementBoundryHit[boundryHitSoundCounter()].play();
+	}
+
+	if (ball.position.x <= 0 + ball_half_width) {
+		audioElementBoundryHit[boundryHitSoundCounter()].play();
+	}
+	
+	if (ball.position.x >= renderer.width - ball_half_width) {
+		audioElementBoundryHit[boundryHitSoundCounter()].play();
+	}
+	
+	
+	
+	
+	
+	// logic for bounce off corner
+	
+	
+	ballSector = Math.floor(sectorReturn(radToDeg(mod360(ballAngle() - world.rotation))));
+	// logic for ball to bounce off of world
+	// for a reference about where I got this math from, see this website: http://rectangleworld.com/blog/archives/358
+	
+	
+	delta_x = ball.position.x - world.position.x;
+	delta_y = ball.position.y - world.position.y;
+	radSquare= delta_x*delta_x + delta_y*delta_y;
+	total_height = world.height/2.0 + ball.height/2.0
+	
+	world_radius_squared = (total_height * total_height) - 10000; // change last number to adjust distance from planet the ball will bounce from
+	
+	if (radSquare < world_radius_squared) {
+		twiceProjFactor = 2*(delta_x*ball_speed_x + delta_y*ball_speed_y)/radSquare;
+		vx = ball_speed_x - twiceProjFactor*delta_x;
+		vy = ball_speed_y - twiceProjFactor*delta_y;
+		ball_speed_x = vx;
+		ball_speed_y = vy;
+
+		audioElementWorldHit[worldHitSoundCounter()].play();
+		worldHitSoundCountText.setText(worldHitSoundCount);
+		
+		
+		
+		//		hit_counters[i].setStyle({stroke: "black", strokeThickness: 2});
+		
+		// use hit_counter_colors array
+		
+		
+		
+		if (ballColor == hit_counter_colors[ballSector] || hit_counter[ballSector] == 0){
+			hit_counter[ballSector] += 1;
+			if (ballColor == 'b'){
+				hit_counters[ballSector].setStyle({fill: "blue", stroke: "black", strokeThickness: 2});
+				hit_counter_colors[ballSector] = 'b';
+			}
+			if (ballColor == 'g'){
+				hit_counters[ballSector].setStyle({fill: "green", stroke: "black", strokeThickness: 2}); 
+				hit_counter_colors[ballSector] = 'g';
+			}
+			if (ballColor == 'r'){
+				hit_counters[ballSector].setStyle({fill: "red", stroke: "black", strokeThickness: 2}); 
+				hit_counter_colors[ballSector] = 'r';
+			}
+		}
+		else if (hit_counter[ballSector] != 0){
+			hit_counter[ballSector] -= 1;
+		}
+		if (hit_counter[ballSector] == 0){
+			hit_counters[ballSector].setStyle({fill: "grey", stroke: "black", strokeThickness: 2}); 
+		}
+		
+		hit_counters[ballSector].setText(hit_counter[ballSector]);
+
+		
+		worldHitSoundCountText.setStyle({font: "35px Desyrel", fill: "green", stroke: "black", strokeThickness: 2}); 
+
+		
+		
+
+
+		
+		
+		
+		
+	}
+
+	
+	// end world bounce logic
+	
+	
+	
+	
+	
+	// update the position by adding the speed (may need to add time modifier if we don't want to update purely "per-frame"
+	ball.position.x += ball_speed_x;
+	ball.position.y += ball_speed_y;
+	
+	
+	
+	for (var i=0; i<5; i++) {
+		greenbricks[i].position.x += green_brick_speed;
+		if (greenbricks[i].position.x - brick_half_width - 100 > renderer.width) {
+			greenbricks[i].position.x = 0 - brick_half_width * 2 - 200;
+		}
+			
+		
+		
+	}
+	
+	for (var i=0; i< redbricks.length; i++) {
+		redbricks[i].position.x -= red_brick_speed;
+		if (redbricks[i].position.x + brick_half_width + 100 < 0) {
+			redbricks[i].position.x = renderer.width + brick_half_width * 2 + 200;
+		}
+		
+	}
+	
+	for (var i=0; i<5; i++) {
+		bluebricks[i].position.x += blue_brick_speed;
+		if (bluebricks[i].position.x - brick_half_width - 100 > renderer.width) {
+			bluebricks[i].position.x = 0 - brick_half_width * 2 - 200;
+		}
+		
+		
+	}
+	
+	brickBounceDown = false;
+	brickBounceUp = false;
+	brickBounceLeft = false;
+	brickBounceRight = false;
+	
+	
+		
+	    // render the stage   
+	    renderer.render(stage);
+	}
+	}
+	</script>
+
+	</body>
+</html>

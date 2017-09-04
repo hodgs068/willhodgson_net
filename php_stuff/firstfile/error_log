@@ -1,0 +1,19 @@
+[05-Jul-2012 13:21:31] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 9
+[05-Jul-2012 14:06:46] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 6
+[05-Jul-2012 14:09:00] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 6
+[05-Jul-2012 14:14:48] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 8
+[05-Jul-2012 14:15:07] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 8
+[05-Jul-2012 14:15:31] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 8
+[05-Jul-2012 14:16:04] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 8
+[05-Jul-2012 14:19:00] PHP Parse error:  syntax error, unexpected T_DNUMBER in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 5
+[06-Jul-2012 19:42:20] PHP Parse error:  syntax error, unexpected $end in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 27
+[06-Jul-2012 19:43:11] PHP Parse error:  syntax error, unexpected $end in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 27
+[18-Jul-2012 11:41:42] PHP Fatal error:  Function name must be a string in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 6
+[18-Jul-2012 11:42:01] PHP Fatal error:  Function name must be a string in /home/hodgs068/public_html/php_stuff/firstfile/index.php on line 6
+[12-Aug-2012 15:34:02] PHP Warning:  include(../includes/connect.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/hodgs068/public_html/php_stuff/firstfile/find_and_replace.php on line 21
+[12-Aug-2012 15:34:02] PHP Warning:  include(../includes/connect.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/hodgs068/public_html/php_stuff/firstfile/find_and_replace.php on line 21
+[12-Aug-2012 15:34:02] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../includes/connect.inc.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/hodgs068/public_html/php_stuff/firstfile/find_and_replace.php on line 21
+[12-Aug-2012 15:34:02] PHP Warning:  include(../includes/html_codes.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/hodgs068/public_html/php_stuff/firstfile/find_and_replace.php on line 22
+[12-Aug-2012 15:34:02] PHP Warning:  include(../includes/html_codes.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/hodgs068/public_html/php_stuff/firstfile/find_and_replace.php on line 22
+[12-Aug-2012 15:34:02] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../includes/html_codes.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/hodgs068/public_html/php_stuff/firstfile/find_and_replace.php on line 22
+[12-Aug-2012 15:34:02] PHP Fatal error:  Call to undefined function  headernavcode() in /home/hodgs068/public_html/php_stuff/firstfile/find_and_replace.php on line 36

@@ -1,0 +1,69 @@
+[22-Jul-2012 10:33:28] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Unknown MySQL server host 'localhos' (25) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:33:28] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:33:28] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:34:55] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'hodgs068_willia'@'localhost' (using password: YES) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:34:55] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:34:55] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:35:06] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'hodgs068_william'@'localhost' (using password: YES) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:35:06] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 10:35:06] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 11:16:16] PHP Parse error:  syntax error, unexpected $end in /home/hodgs068/public_html/php/loginform.inc.php on line 34
+[22-Jul-2012 11:33:58] PHP Warning:  mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Unknown MySQL server host 'http' (25) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 11:33:58] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 11:33:58] PHP Warning:  mysql_select_db() [<a href='function.mysql-select-db'>function.mysql-select-db</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/connect.inc.php on line 9
+[22-Jul-2012 11:45:43] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/sqltest.php on line 6
+[22-Jul-2012 11:45:43] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/sqltest.php on line 6
+[22-Jul-2012 11:45:59] PHP Warning:  require(connectincphp) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/hodgs068/public_html/php/sqltest.php on line 3
+[22-Jul-2012 11:45:59] PHP Warning:  require(connectincphp) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/hodgs068/public_html/php/sqltest.php on line 3
+[22-Jul-2012 11:45:59] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'connectincphp' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/hodgs068/public_html/php/sqltest.php on line 3
+[22-Jul-2012 13:12:59] PHP Warning:  Missing argument 1 for getfield(), called in /home/hodgs068/public_html/php/index.php on line 8 and defined in /home/hodgs068/public_html/php/core.inc.php on line 14
+[22-Jul-2012 13:48:38] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:51:15] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:51:32] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:51:35] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:52:16] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:53:33] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:54:20] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:54:58] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 13:55:37] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 7
+[22-Jul-2012 13:56:57] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 13:57:12] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 13:58:10] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 13:58:21] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 13:58:58] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 13:59:09] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 13:59:42] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 14:00:01] PHP Parse error:  syntax error, unexpected '=' in /home/hodgs068/public_html/php/sqltest.php on line 8
+[22-Jul-2012 14:00:39] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/sqltest.php on line 7
+[22-Jul-2012 14:00:58] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/sqltest.php on line 7
+[22-Jul-2012 14:01:48] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:02:16] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:02:24] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:04:52] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:05:17] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:05:24] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:05:27] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:05:44] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:06:13] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:06:15] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:07:52] PHP Parse error:  syntax error, unexpected T_VARIABLE in /home/hodgs068/public_html/php/core.inc.php on line 15
+[22-Jul-2012 14:16:34] PHP Fatal error:  Call to undefined function  geruserfield() in /home/hodgs068/public_html/php/index.php on line 8
+[22-Jul-2012 19:11:52] PHP Parse error:  syntax error, unexpected ')' in /home/hodgs068/public_html/php/register.php on line 28
+[22-Jul-2012 19:15:36] PHP Parse error:  syntax error, unexpected '{' in /home/hodgs068/public_html/php/register.php on line 28
+[22-Jul-2012 19:16:19] PHP Parse error:  syntax error, unexpected '{' in /home/hodgs068/public_html/php/register.php on line 28
+[22-Jul-2012 19:16:27] PHP Parse error:  syntax error, unexpected '{' in /home/hodgs068/public_html/php/register.php on line 28
+[22-Jul-2012 19:16:37] PHP Parse error:  syntax error, unexpected '{' in /home/hodgs068/public_html/php/register.php on line 28
+[22-Jul-2012 19:24:38] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:24:38] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:24:38] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:24:38] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:24:38] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/loginform.inc.php on line 12
+[22-Jul-2012 19:24:38] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/loginform.inc.php on line 12
+[22-Jul-2012 19:25:06] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:25:06] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:25:06] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:25:06] PHP Warning:  mysql_real_escape_string() [<a href='function.mysql-real-escape-string'>function.mysql-real-escape-string</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/loginform.inc.php on line 11
+[22-Jul-2012 19:25:06] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: Access denied for user 'hodgs068'@'localhost' (using password: NO) in /home/hodgs068/public_html/php/loginform.inc.php on line 12
+[22-Jul-2012 19:25:06] PHP Warning:  mysql_query() [<a href='function.mysql-query'>function.mysql-query</a>]: A link to the server could not be established in /home/hodgs068/public_html/php/loginform.inc.php on line 12
+[22-Jul-2012 19:35:57] PHP Parse error:  syntax error, unexpected T_STRING, expecting ',' or ';' in /home/hodgs068/public_html/php/index.php on line 13
+[22-Jul-2012 19:36:30] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/hodgs068/public_html/php/index.php on line 12

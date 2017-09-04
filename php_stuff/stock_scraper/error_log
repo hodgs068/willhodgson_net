@@ -1,0 +1,4 @@
+[03-Jul-2012 13:00:32] PHP Parse error:  syntax error, unexpected '%', expecting '&' or T_VARIABLE in /home/hodgs068/public_html/php_stuff/stockDownloader.php on line 5
+[03-Jul-2012 13:01:08] PHP Warning:  file_get_contents(http://ichart.finance.yahoo.com/table.csv?s=APPL&amp;d=6&amp;e=3&amp;f=12&amp;g=d&amp;a=4&amp;b=19&amp;c=2012&amp;ignore=.csv) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/hodgs068/public_html/php_stuff/stockDownloader.php on line 14
+[03-Jul-2012 13:01:08] PHP Warning:  Division by zero in /home/hodgs068/public_html/php_stuff/stockDownloader.php on line 34
