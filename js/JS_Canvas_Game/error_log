@@ -1,0 +1,4 @@
+[04-Sep-2017 12:40:20 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24
+[04-Sep-2017 12:40:26 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24
+[04-Sep-2017 12:42:05 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24
+[04-Sep-2017 13:08:50 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24

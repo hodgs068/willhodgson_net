@@ -16,3 +16,7 @@
 [19-Aug-2012 17:34:30] PHP Fatal error:  Call to undefined function  headstandard() in /home/hodgs068/public_html/secondpage/rotating.php on line 1
 [19-Aug-2012 17:34:38] PHP Fatal error:  Call to undefined function  headstandard() in /home/hodgs068/public_html/secondpage/rotating.php on line 1
 [19-Aug-2012 17:35:37] PHP Fatal error:  Call to undefined function  headstandard() in /home/hodgs068/public_html/secondpage/rotating.php on line 1
+[04-Sep-2017 12:55:40 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24
+[04-Sep-2017 12:56:11 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24
+[04-Sep-2017 13:01:21 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24
+[04-Sep-2017 13:17:54 America/Chicago] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home3/willhodgson/public_html/includes/connect.inc.php on line 24
