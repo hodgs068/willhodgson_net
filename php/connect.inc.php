@@ -1,10 +1,10 @@
 <?php
 
 	$mysql_host = 'localhost';
-	$mysql_user = 'hodgs068_william';
-	$mysql_pass = '1A7ters9';
+	$mysql_user = 'willhodg_user1';
+	$mysql_pass = 'Maple1132';
 	
-	$mysql_db = 'hodgs068_william';
+	$mysql_db = 'willhodg_main_db';
 	
 	$connect = mysql_connect($mysql_host, $mysql_user, $mysql_pass);
 	

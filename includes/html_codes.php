@@ -4,8 +4,8 @@ function headStandard(){
 	echo "
 			<meta charset=\"utf-8\"/>
 			<title>William's Website</title>
-			<link rel=\"stylesheet\" href=\"http://williamhodgson.org/css/main.css\">
-			<link rel=\"shortcut icon\" href=\"http://williamhodgson.org/favicon.png\" />
+			<link rel=\"stylesheet\" href=\"http://willhodgson.net/css/main.css\">
+			<link rel=\"shortcut icon\" href=\"http://willhodgson.net/favicon.png\" />
 	";
 }
 
@@ -30,11 +30,11 @@ function headerNavCode(){
 	
 	<nav id=\"top_menu\">
 		<ul>
-			<li><a href=\"http://williamhodgson.org/index.php\">Home</a></li>
-			<li><a href=\"http://williamhodgson.org/empty.php\">Placeholder-1</a></li>
-			<li><a href=\"http://williamhodgson.org/empty.php\">Placeholder-2</a></li>
-			<li><a href=\"http://williamhodgson.org/empty.php\">Placeholder-3</a></li>
-			<li><a href=\"http://williamhodgson.org/forums.php\">Forums (not currently in service)</a></li>
+			<li><a href=\"http://willhodgson.net/index.php\">Home</a></li>
+			<li><a href=\"http://willhodgson.net/empty.php\">Placeholder-1</a></li>
+			<li><a href=\"http://willhodgson.net/empty.php\">Placeholder-2</a></li>
+			<li><a href=\"http://willhodgson.net/empty.php\">Placeholder-3</a></li>
+			<li><a href=\"http://willhodgson.net/forums.php\">Forums (not currently in service)</a></li>
 		</ul>
 	</nav>";
 	}

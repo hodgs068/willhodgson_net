@@ -17,7 +17,7 @@
 			$result = mysql_query("SELECT count(1) FROM `users`"); // try to fit back into HTML_Codes function when possible
 			$row = mysql_fetch_array($result);
 			$total = $row[0];
-			echo $total." users registered so far. | "."<a href='http://www.williamhodgson.org/login/register.php'>Register now!</a>";
+			echo $total." users registered so far. | "."<a href='http://www.willhodgson.net/login/register.php'>Register now!</a>";
 			?>
 			<div id="login"><?php include $root.'/login/login.php'; ?></div>
 			<hr class="hr" />

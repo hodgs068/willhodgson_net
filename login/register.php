@@ -6,18 +6,17 @@ include $_SERVER['DOCUMENT_ROOT']."/master.inc.php";
 	
 	
 	$mysql_host = 'localhost';
-	$mysql_user = 'hodgs068_william';
-	$mysql_pass = '1A7ters9';
+	$mysql_user = 'willhodg_user1';
+	$mysql_pass = 'Maple1132';
 	
-	$mysql_db = 'hodgs068_william';
+	$mysql_db = 'willhodg_main_db';
 	
 	$connect = mysql_connect($mysql_host, $mysql_user, $mysql_pass);
 	
-//$connect = mysql_connect('localhost','hodgs068_william','}1A7ters9');
 if (!$connect) {
 	die('Could not connect to the server.'.mysql_error());
 }
-$db_selected = mysql_select_db('hodgs068_william');
+$db_selected = mysql_select_db('willhodg_main_db');
 if (!$db_selected) {
 	die('Could not connect to the database.'.mysql_error());
 }

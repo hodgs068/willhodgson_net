@@ -1,9 +1,9 @@
 <?php
-$connect = mysql_connect('localhost','hodgs068_william','}1A7ters9');
+$connect = mysql_connect('localhost','willhodg_user1','}Maple1132');
 if (!$connect) {
 	die('Could not connect to the server.'.mysql_error());
 }
-$db_selected = mysql_select_db('hodgs068_william');
+$db_selected = mysql_select_db('willhodg_main_db');
 if (!$db_selected) {
 	die('Could not connect to the database.'.mysql_error());
 
